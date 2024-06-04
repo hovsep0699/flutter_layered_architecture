@@ -1,0 +1,10 @@
+{
+  "title": "Запросы",
+  "search": "Поиск",
+  "type": "Тип",
+  "purpose": "Цель",
+  "date": "Дата",
+  "effect": "Эффект",
+  "impacting": "Влияет",
+  "notImpacting": "Не влияет"
+}

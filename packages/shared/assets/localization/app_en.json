@@ -1,0 +1,10 @@
+{
+  "title": "Requests",
+  "search": "Search",
+  "type": "Type",
+  "purpose": "Purpose",
+  "date": "Date",
+  "effect": "Effect",
+  "impacting": "Is impacting",
+  "notImpacting": "Is not impacting"
+}

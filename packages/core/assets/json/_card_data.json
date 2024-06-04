@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "logoType": "svg",
+      "logoUrl": "assets/logos/defaultLogo.svg",
+      "bankName": "Վարկային կազմակերպություն",
+      "type": "ՖԱՅԿՈ Սքոր զեկույց",
+      "purpose": "Նոր վարկի դիմում",
+      "date": "28.05.2024",
+      "effect": false
+    },
+    {
+      "logoType": "image",
+      "logoUrl": "assets/logos/evk_logo1.png",
+      "bankName": "Էվոկա բանկ",
+      "type": "ՖԱՅԿՈ Սքոր զեկույց",
+      "purpose": "Նոր վարկի դիմում",
+      "effect": true,
+      "date": "28.05.2024"
+    },
+    {
+      "logoType": "image",
+      "logoUrl": "assets/logos/id_logo1.png",
+      "bankName": "Այ Դի բանկ",
+      "type": "ՖԱՅԿՈ Սքոր զեկույց",
+      "purpose": "Նոր վարկի դիմում",
+      "effect": false,
+      "date": "28.05.2024"
+    },
+    {
+      "logoType": "svg",
+      "logoUrl": "assets/logos/defaultLogo.svg",
+      "bankName": "Վարկային կազմակերպություն",
+      "type": "ՖԱՅԿՈ Սքոր զեկույց",
+      "purpose": "Նոր վարկի դիմում",
+      "effect": false,
+      "date": "28.05.2024"
+    }
+  ]
+}
