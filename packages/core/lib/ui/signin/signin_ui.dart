@@ -1,8 +1,6 @@
 import 'package:core/assetsGen/assets.gen.dart';
-import 'package:core/providers/form_provider.dart';
 import 'package:core/ui/signin/signin_form.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared/services/app_localization.dart';
 import 'package:shared/shared.dart';
 
@@ -40,16 +38,10 @@ class SignInUI extends StatelessWidget {
                           )
                         ],
                       ),
-                      Padding(
-                          padding: const EdgeInsets.symmetric(
+                      const Padding(
+                          padding: EdgeInsets.symmetric(
                               vertical: 35, horizontal: 16),
-                          child: ChangeNotifierProvider(
-                              create: (BuildContext context) => FormProvider(),
-                              child: Consumer<FormProvider>(
-                                builder: (context, provider, child) {
-                                  return const SignInForm();
-                                },
-                              ))),
+                          child: SignInForm()),
                     ]))));
   }
 }

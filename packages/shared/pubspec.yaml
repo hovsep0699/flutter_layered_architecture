@@ -16,6 +16,8 @@ dependencies:
   path: any
   flutter_gen: any
   provider: any
+  dio: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

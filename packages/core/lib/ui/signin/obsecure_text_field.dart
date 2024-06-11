@@ -1,6 +1,4 @@
-import 'package:core/providers/form_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ObscureTextField extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -8,11 +6,19 @@ class ObscureTextField extends StatefulWidget {
   final Icon? suffixIcon;
   final bool obscureText;
   final FocusNode? focusNode;
+  final bool isValid;
+  final Function(String?)? onChanged;
+  final Function(bool hasFocus)? onFocusChanged;
+  final String? Function(String?)? validator;
   final GlobalKey<FormFieldState> textKey;
   final TextEditingController? controller;
 
   const ObscureTextField(
       {super.key,
+      this.validator,
+      this.onChanged,
+      this.isValid = true,
+      this.onFocusChanged,
       required this.textKey,
       required this.formKey,
       this.hintText,
@@ -26,9 +32,10 @@ class ObscureTextField extends StatefulWidget {
 
 class ObscureTextFieldState extends State<ObscureTextField> {
   bool _hideShow = true;
-  bool _isValid = true;
   final FocusNode _defaultFocusNode = FocusNode();
   final TextEditingController _defaultController = TextEditingController();
+  late void Function(bool hasFocus) _defaultFocusChange;
+  late void Function(bool hasFocus) _focusChange;
   late FocusNode _focusNode;
   late TextEditingController _controller;
 
@@ -36,54 +43,61 @@ class ObscureTextFieldState extends State<ObscureTextField> {
 
   // bool get isValid => _isValid;
 
-  void _onFocusChanged() {
-    if (context.mounted) {
-      final FormProvider provider =
-          Provider.of<FormProvider>(context, listen: false);
-      if (!_focusNode.hasFocus) {
-        widget.textKey.currentState?.validate();
-        setState(() {
-          _isValid = _formKey.currentState!.errorText == null;
-        });
-        provider
-            .updateTextFieldStatus(_formKey.currentState!.errorText == null);
-      }
-    }
+  void _onFocusChanged(bool hasFocus) {
+    //
+    //   // if (context.mounted) {
+    //     final LoginBloc provider =
+    //         BlocProvider.of<LoginBloc>(context, listen: false);
+    //
+    //     provider.add()
+    //     // if (!_focusNode.hasFocus) {
+    //     //   widget.textKey.currentState?.validate();
+    //   //     setState(() {
+    //   //       _isValid = _formKey.currentState!.errorText == null;
+    //   //     });
+    //   //     provider
+    //   //         .updateTextFieldStatus(_formKey.currentState!.errorText == null);
+    //   //   }
+    //   // }
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _focusNode.addListener(_onFocusChanged);
+  void _listener() {
+    _focusChange(_focusNode.hasFocus);
   }
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   _focusNode.addListener(_listener);
+  // }
 
   @override
   void initState() {
+    // print(widget.isValid);
+
+    _defaultFocusChange = _onFocusChanged;
+    _focusChange = widget.onFocusChanged ?? _defaultFocusChange;
     _formKey = widget.textKey;
     _controller = widget.controller ?? _defaultController;
     _focusNode = widget.focusNode ?? _defaultFocusNode;
-
+    _focusNode.addListener(_listener);
     super.initState();
   }
 
   @override
   void dispose() {
-    _focusNode.removeListener(_onFocusChanged);
+    _focusNode.removeListener(_listener);
     _focusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    // LoginBloc provider = BlocProvider.of<LoginBloc>(context);
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       TextFormField(
           key: _formKey,
-          validator: (value) {
-            if (value == null || value.length < 8) {
-              return "Նվազագույնը 8 նիշ";
-            }
-            return null;
-          },
+          validator: widget.validator,
           controller: _controller,
           focusNode: _focusNode,
           obscureText: widget.obscureText ? _hideShow : false,
@@ -91,7 +105,7 @@ class ObscureTextFieldState extends State<ObscureTextField> {
               focusedBorder: OutlineInputBorder(
                   gapPadding: 0,
                   borderSide: BorderSide(
-                      color: _isValid
+                      color: widget.isValid
                           ? const Color.fromARGB(255, 16, 112, 255)
                           : const Color.fromARGB(255, 255, 14, 21)),
                   borderRadius: BorderRadius.circular(8)),
@@ -112,7 +126,7 @@ class ObscureTextFieldState extends State<ObscureTextField> {
               hintStyle:
                   const TextStyle(color: Color.fromARGB(255, 181, 181, 181)),
               enabled: true,
-              border: _isValid
+              border: widget.isValid
                   ? InputBorder.none
                   : OutlineInputBorder(
                       gapPadding: 0,
@@ -121,7 +135,7 @@ class ObscureTextFieldState extends State<ObscureTextField> {
                       borderRadius: BorderRadius.circular(8)),
               hintText: widget.hintText,
               filled: true,
-              fillColor: _isValid
+              fillColor: widget.isValid
                   ? const Color.fromARGB(255, 240, 244, 255)
                   : const Color.fromARGB(255, 255, 243, 243)))
     ]);
