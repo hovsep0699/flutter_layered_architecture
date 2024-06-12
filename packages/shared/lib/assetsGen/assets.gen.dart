@@ -21,8 +21,11 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notEffect.svg
   SvgGenImage get notEffect => const SvgGenImage('assets/icons/notEffect.svg');
 
+  /// File path: assets/icons/warning.svg
+  SvgGenImage get warning => const SvgGenImage('assets/icons/warning.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [effect, notEffect];
+  List<SvgGenImage> get values => [effect, notEffect, warning];
 }
 
 class $AssetsLocalizationGen {

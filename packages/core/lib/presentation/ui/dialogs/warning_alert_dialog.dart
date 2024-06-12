@@ -3,6 +3,7 @@ import 'package:core/domain/auth/bloc/auth_event.dart';
 import 'package:core/presentation/ui/dialogs/warning_dialog_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared/assetsGen/assets.gen.dart';
 
 class WarningAlertDialog extends StatelessWidget {
   final String message;
@@ -12,7 +13,9 @@ class WarningAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      icon: const Center(child: Icon(Icons.warning)),
+      icon: Center(
+          child: AppAssets.icons.warning
+              .svg(width: 42.52, height: 35.88, package: 'shared')),
       actionsAlignment: MainAxisAlignment.center,
       actionsPadding: EdgeInsets.zero,
       titlePadding: EdgeInsets.zero,
