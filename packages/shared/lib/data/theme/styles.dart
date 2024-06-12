@@ -20,10 +20,23 @@ const TextStyle defaultMediumTextStyle = TextStyle(
     fontWeight: defaultMediumTextFontWeight,
     decorationThickness: defaultTextMediumDecorationThickness);
 
+const TextStyle defaultAlertTextStyle = TextStyle(
+    fontFamily: defaultMediumTextFontFamily,
+    fontSize: defaultAlertTextFontSize,
+    fontWeight: defaultMediumTextFontWeight,
+    color: defaultTextColor);
+
 const TextStyle defaultSignFieldTextStyle = TextStyle(
     fontSize: defaultSignFieldTextFontSize,
     height: defaultSignFieldTextLineHeight,
     fontWeight: defaultSignFieldFontWeight);
+
+const TextStyle defaultAlertButtonTextStyle = TextStyle(
+    fontSize: 14,
+    height: 1.42,
+    letterSpacing: 0.1,
+    fontWeight: FontWeight.w500,
+    color: Color.fromRGBO(16, 112, 255, 1));
 
 const TextStyle defaultSignButtonTextStyle = TextStyle(color: Colors.white);
 

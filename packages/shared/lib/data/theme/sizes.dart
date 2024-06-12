@@ -26,3 +26,9 @@ const double defaultSignFieldInputMarginTop = 6;
 const double defaultSignFieldSpaceBetween = 16;
 
 const double defaultSignButtonMarginTop = 24;
+
+const double defaultWarningIconHeight = 35.88;
+
+const double defaultWarningIconWidth = 42.52;
+
+const double defaultSignInContentSVGSize = 150;

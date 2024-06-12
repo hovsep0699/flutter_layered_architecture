@@ -11,34 +11,30 @@ class SignInUI extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(88),
+            preferredSize: defaultSignInAppBarSize,
             child: AppBar(
               toolbarTextStyle: Theme.of(context).appBarTheme.titleTextStyle,
-              // toolbarHeight: 88,
               centerTitle: true,
               title: const Text("Sign In",
                   style: TextStyle(color: defaultAppBarTextColor)),
             )),
         body: SingleChildScrollView(
             child: Padding(
-                padding: const EdgeInsets.only(top: 43),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          MockAssets.images.loginCont.svg(
-                            package: 'core',
-                            width: 150,
-                            height: 150,
-                          )
-                        ],
-                      ),
-                      const Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 35, horizontal: 16),
-                          child: SignInForm()),
-                    ]))));
+                padding: defaultSignInBodyPadding,
+                child: Column(children: <Widget>[
+                  Row(
+                    mainAxisAlignment: defaultSignInBodyAlignment,
+                    children: [
+                      MockAssets.images.loginCont.svg(
+                        package: 'core',
+                        width: defaultSignInContentSVGSize,
+                        height: defaultSignInContentSVGSize,
+                      )
+                    ],
+                  ),
+                  const Padding(
+                      padding: defaultSignInContainerPadding,
+                      child: SignInForm()),
+                ]))));
   }
 }

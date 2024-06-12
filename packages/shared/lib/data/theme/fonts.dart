@@ -8,6 +8,8 @@ const double defaultTextSmallDecorationThickness = 400;
 
 const double defaultMediumTextFontSize = 16;
 
+const double defaultAlertTextFontSize = 18;
+
 const double defaultSmallTextFontSize = 16;
 
 const String defaultMediumTextFontFamily = "Mardoto";
