@@ -1,5 +1,5 @@
 library shared;
 
-export './theme/theme.dart';
+export './data/theme/theme.dart';
 export './assetsGen/assets.gen.dart';
-export './config/config.dart';
+export './data/config/config.dart';

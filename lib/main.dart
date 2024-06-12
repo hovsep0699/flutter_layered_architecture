@@ -1,7 +1,8 @@
-import 'package:app/app.dart';
+import 'package:app/presentation/app.dart';
 import 'package:core/assetsGen/assets.gen.dart';
 import 'package:core/core.dart';
-import 'package:core/providers/localization_provider.dart';
+import 'package:core/data/mock_data/mock.dart';
+import 'package:core/presentation/providers/localization_provider.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
